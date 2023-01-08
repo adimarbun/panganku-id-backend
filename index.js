@@ -8,6 +8,7 @@ import bodyParser from "body-parser";
 import fileUpload from "express-fileupload";
 import path from 'path';
 import { fileURLToPath } from 'url';
+import dbReplika from "./config/DatabaseReplika.js";
 
 dotenv.config();
 const app = express();
@@ -15,6 +16,7 @@ const app = express();
 
 try {
     await db.authenticate();
+    await dbReplika.authenticate();
     console.log('Database Connected...');
 } catch (error) {
     console.error(error);

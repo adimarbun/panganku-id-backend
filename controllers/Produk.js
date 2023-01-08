@@ -5,6 +5,7 @@ import Toko from "../models/TokoModel.js";
 import Users from "../models/UserModel.js";
 
 import Sequelize from "sequelize";
+import ProdukReplika from "../models/ProdukReplikaModel.js";
 const Op = Sequelize.Op;
 
 
@@ -97,7 +98,7 @@ export const GetProdukSearch = async(req, res) =>{
 
 export const GetAllProdukByTokoId = async(req, res) =>{
   try{
-      const dataProduk =  await Produk.findAll({
+      const dataProduk =  await ProdukReplika.findAll({
         where:{
           toko_id: req.params.toko_id
         },
