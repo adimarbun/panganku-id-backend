@@ -4,7 +4,7 @@ import { verifyToken } from "../middleware/VerifyToken.js";
 import { refreshToken } from "../controllers/RefreshToken.js";
 import { GetAllKota, GetKotaByProvId, GetProvincy } from "../controllers/Region.js";
 import {CreateToko, GetAllToko, GetTokoByUserId, UpdateToko} from "../controllers/Toko.js";
-import { GetAllProduk, GetAllProdukByTokoId } from "../controllers/Produk.js";
+import { AddProduct, GetAllProduk, GetAllProdukByTokoId, GetProdukSearch, UploadImg } from "../controllers/Produk.js";
 
 
 const router = express.Router();
@@ -29,5 +29,12 @@ router.put('/toko',UpdateToko)
 //Produk
 router.get('/all-produk',GetAllProduk);
 router.get('/produk/by-toko/:toko_id',GetAllProdukByTokoId)
+router.get('/produk/:prov_id/:kota_id',GetProdukSearch)
+router.post('/produk',AddProduct)
+
+
+router.post('/upload',UploadImg);
+
+
 
 export default router;
