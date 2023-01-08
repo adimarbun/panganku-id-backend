@@ -28,7 +28,10 @@ const Produk = db.define('produk',{
     },
     img_produk:{
         type: DataTypes.STRING
-    }
+    },
+    stok:{
+        type: DataTypes.INTEGER
+    },
 },{
     freezeTableName:true,
     timestamps: false

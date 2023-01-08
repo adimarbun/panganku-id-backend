@@ -1,3 +1,5 @@
+import Kota from "../models/KotaModel.js";
+import Provinces from "../models/ProvincesModel.js";
 import Toko from "../models/TokoModel.js";
 
 export const GetAllToko = async(req, res) =>{
@@ -14,7 +16,14 @@ export const GetTokoByUserId = async(req,res) =>{
         const toko =  await Toko.findOne({
             where:{
                 user_id: req.params.user_id
-            }
+            },
+            include: [
+                {
+                  model: Provinces
+                },
+                {
+                    model:Kota
+                }]        
         });
         res.json(toko);
     }catch(e){
