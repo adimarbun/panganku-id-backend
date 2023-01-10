@@ -3,7 +3,7 @@ import { getUsers, Register, Login, Logout } from "../controllers/Users.js";
 import { verifyToken } from "../middleware/VerifyToken.js";
 import { refreshToken } from "../controllers/RefreshToken.js";
 import { GetAllKota, GetKotaByProvId, GetProvincy } from "../controllers/Region.js";
-import {CreateToko, GetAllToko, GetTokoByUserId, UpdateToko} from "../controllers/Toko.js";
+import {CreateToko, GetAllToko, GetTokoById, GetTokoByUserId, UpdateToko} from "../controllers/Toko.js";
 import { AddProduct, DeleteProduk, GetAllProduk, GetAllProdukByTokoId, GetProdukById, GetProdukSearch, UpdateProduk, UploadImg } from "../controllers/Produk.js";
 
 
@@ -23,6 +23,7 @@ router.get('/kota/:prov_id',GetKotaByProvId)
 //Toko
 router.get('/all-toko',GetAllToko)
 router.get('/toko/:user_id',GetTokoByUserId)
+router.get('/toko-by-id/:id',GetTokoById)
 router.post('/toko',CreateToko)
 router.put('/toko',UpdateToko)
 

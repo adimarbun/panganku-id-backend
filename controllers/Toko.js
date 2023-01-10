@@ -31,6 +31,26 @@ export const GetTokoByUserId = async(req,res) =>{
     }
 }
 
+export const GetTokoById = async(req,res) =>{
+    try{
+        const toko =  await Toko.findOne({
+            where:{
+                id: req.params.id
+            },
+            include: [
+                {
+                  model: Provinces
+                },
+                {
+                    model:Kota
+                }]        
+        });
+        res.json(toko);
+    }catch(e){
+        console.log(e)
+    }
+}
+
 
 export const CreateToko = async(req,res) =>{
     try{
