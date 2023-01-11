@@ -1,10 +1,11 @@
 import Kota from "../models/KotaModel.js";
 import Provinces from "../models/ProvincesModel.js";
 import Toko from "../models/TokoModel.js";
+import TokoReplika from "../models/TokoReplikaModel.js";
 
 export const GetAllToko = async(req, res) =>{
     try{
-        const dataToko =  await Toko.findAll();
+        const dataToko =  await TokoReplika.findAll();
         res.json(dataToko);
     }catch(e){
         console.log(e)
@@ -13,7 +14,7 @@ export const GetAllToko = async(req, res) =>{
 
 export const GetTokoByUserId = async(req,res) =>{
     try{
-        const toko =  await Toko.findOne({
+        const toko =  await TokoReplika.findOne({
             where:{
                 user_id: req.params.user_id
             },
@@ -33,7 +34,7 @@ export const GetTokoByUserId = async(req,res) =>{
 
 export const GetTokoById = async(req,res) =>{
     try{
-        const toko =  await Toko.findOne({
+        const toko =  await TokoReplika.findOne({
             where:{
                 id: req.params.id
             },

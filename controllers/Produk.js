@@ -11,7 +11,7 @@ const Op = Sequelize.Op;
 
 export const GetAllProduk = async(req, res) =>{
     try{
-        const dataProduk =  await Produk.findAll({include: [
+        const dataProduk =  await ProdukReplika.findAll({include: [
             {
               model: Toko,
               as: "toko",
@@ -31,7 +31,7 @@ export const GetAllProduk = async(req, res) =>{
 
 export const GetProdukById= async(req, res) =>{
   try{
-    const dataProduk =  await Produk.findOne(
+    const dataProduk =  await ProdukReplika.findOne(
       {
         where:{
           id: req.params.id,
@@ -47,10 +47,9 @@ export const GetProdukSearch = async(req, res) =>{
   const provId=req.params.prov_id;
   const kotaId = req.params.kota_id;
   const nameProduk = req.query.produk;
-  console.log("kota",kotaId);
   try{
     if(nameProduk){
-      const dataProduk =  await Produk.findAll(
+      const dataProduk =  await ProdukReplika.findAll(
         {
           where:{
             nama_produk: { [Op.like]: `%${nameProduk}%` },
@@ -72,7 +71,7 @@ export const GetProdukSearch = async(req, res) =>{
           }]});
       res.json(dataProduk);
     }else{
-      const dataProduk =  await Produk.findAll(
+      const dataProduk =  await ProdukReplika.findAll(
         {
           include: [
           {

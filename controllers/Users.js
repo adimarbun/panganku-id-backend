@@ -1,6 +1,7 @@
 import Users from "../models/UserModel.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import UsersReplika from "../models/UserReplikaModel.js";
 
 export const getUsers = async(req, res) => {
     try {
@@ -10,6 +11,15 @@ export const getUsers = async(req, res) => {
         res.json(users);
     } catch (error) {
         console.log(error);
+        try{
+            //if db master down, use db replika
+            const users = await UsersReplika.findAll({
+                attributes:['id','name','email']
+            });
+            res.json(users);
+        }catch(e){
+            res.send("error",e);
+        }      
     }
 }
 
